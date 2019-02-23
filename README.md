@@ -8,8 +8,9 @@
 
 ### Comments
 * Added reset button functionality
-* Added edge cases for incorrect key input
+* Added edge cases for incorrect key input and uppercase letters.
 * Included some CSS Animations
+* Added array for userGuesses, resets if win/loss. 
 
 ### Screenshot
 ![screenshot](./assets/images/screenshot.png "Screenshot 1")

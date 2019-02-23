@@ -4,7 +4,7 @@ const computerChoices = ["a", "b", "c", "d", "e", "f", "g" , "h", "i", "j", "k",
     let wins = 0;
     let losses = 0;
     let guessesLeft = 10;
-
+    let userGuesses = [];
     // Create variables that hold references to the places in the HTML where we want to display things.
     let directionsText = document.getElementById("directions-text");
     let userChoiceText = document.getElementById("userchoice-text");
@@ -29,21 +29,24 @@ document.location.reload();
 
     document.onkeyup = function(event) {
 
-      // Determines which key was pressed.
+      // Determines which key was pressed and pushes into userGuesses array
       let userGuess = event.key;
-
+      let userGuessLower = userGuess.toLowerCase()
+      userGuesses.push(userGuessLower);
       //game logic, includes game over function
 
-      if (userGuess === computerGuess) {
+      if (userGuessLower === computerGuess) {
         wins++;
         guessesLeft = 10;
              // shows computer guess
-        computerChoiceText.textContent = "Nice! Last won guess: " + computerGuess;
+        computerChoiceText.textContent = "Shazam! Your psychic abilities conjured: " + computerGuess;
+        // reset userGuesses array
+        userGuesses = [];
         // chooses new number for user to guess
         computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
       } 
-      else if (computerChoices.indexOf(userGuess) === -1){
-        alert('please only enter alphabet letters')
+      else if (computerChoices.indexOf(userGuessLower) === -1){
+        alert('please only enter alphabet letters');
         return;
       }
       else {
@@ -52,6 +55,7 @@ document.location.reload();
         losses++;
         alert ('Game Over! Try again if you are worthy.');
         guessesLeft = 10;
+        userGuesses = [];
         // javascript_abort();
         // return;
         computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
@@ -62,7 +66,7 @@ document.location.reload();
         directionsText.textContent = "";
 
         // Display the user and computer guesses, and wins/losses/guesses left.
-        userChoiceText.textContent = "You chose: " + userGuess;
+        userChoiceText.textContent = "You chose: " + userGuesses;
         winsText.textContent = "wins: " + wins;
         lossesText.textContent = "losses: " + losses;
         guessesText.textContent = "guesses left: " + guessesLeft;
