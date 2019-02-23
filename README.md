@@ -8,8 +8,12 @@
 
 ### Comments
 * Added reset button functionality
-* Incorporated game over function
-* Included basic CSS Animations
+* Added edge cases for incorrect key input
+* Included some CSS Animations
+
+### Screenshot
+![screenshot](./assets/images/screenshot.png "Screenshot 1")
+
 
 # JavaScript Assignment
 
